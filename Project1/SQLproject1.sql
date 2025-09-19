@@ -17,14 +17,14 @@ END
 GO
 
 /* Ensure database is usable */
---USE master;
---GO
---ALTER DATABASE SuperstoreDW SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
---GO
+USE master;
+GO
+ALTER DATABASE SuperstoreDW SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+GO
 USE SuperstoreDW;
 GO
---ALTER DATABASE SuperstoreDW SET MULTI_USER;
---GO
+ALTER DATABASE SuperstoreDW SET MULTI_USER;
+GO
 
 /**********************************************
                 SCHEMA CREATION
@@ -758,6 +758,7 @@ SELECT 'Customer' AS Dim, COUNT(*) AS Rows FROM dim.Customer
 UNION ALL SELECT 'Product', COUNT(*) FROM dim.Product
 UNION ALL SELECT 'Date', COUNT(*) FROM dim.Date;
 GO
+
 
 
  
