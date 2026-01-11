@@ -1,10 +1,10 @@
--- Creates database, schemas, tables, and loads data
+-- Creates database, schemas, tables and loads data
 
 /**********************************************
                 DATABASE SETUP
 **********************************************/
 
-/* 0.1 Create database safely */
+/* 0.1 Create database */
 IF DB_ID(N'SuperstoreDW') IS NULL
 BEGIN
     CREATE DATABASE SuperstoreDW;
@@ -16,7 +16,7 @@ BEGIN
 END
 GO
 
-/* Ensure database is usable */
+
 USE master;
 GO
 ALTER DATABASE SuperstoreDW SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
@@ -210,7 +210,7 @@ DELETE FROM d WHERE rn > 1;
 PRINT 'Deduplication complete';
 GO
 
-/* 2.4 Basic QA checks */
+/* 2.4 QA checks */
 PRINT 'Running data quality checks...';
 CREATE TABLE qa.LoadIssues
 (
@@ -744,21 +744,3 @@ PRINT '';
 PRINT 'Superstore Data Warehouse setup complete';
 PRINT '';
 GO
-
--- Verification queries
-
-PRINT 'Verification queries:';
-SELECT COUNT(*) AS RawCount FROM raw.Superstore;
-PRINT '2. Staging data count:';
-SELECT COUNT(*) AS StagingCount FROM stg.Superstore_Typed;
-PRINT '3. Fact table count:';
-SELECT COUNT(*) AS FactCount FROM fact.Sales;
-PRINT '4. Dimension counts:';
-SELECT 'Customer' AS Dim, COUNT(*) AS Rows FROM dim.Customer
-UNION ALL SELECT 'Product', COUNT(*) FROM dim.Product
-UNION ALL SELECT 'Date', COUNT(*) FROM dim.Date;
-GO
-
-
-
- 
