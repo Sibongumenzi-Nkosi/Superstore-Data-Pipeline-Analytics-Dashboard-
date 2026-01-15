@@ -1,4 +1,4 @@
-### Superstore Data Pipeline & Analytics Dashboard
+# Superstore Data Pipeline & Analytics Dashboard
 
 **GOAL:** Convert messy Superstore CSV files into a clean star schema for analytics. 
 
